@@ -1,7 +1,19 @@
 import { Toaster } from "react-hot-toast";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Form, Input, Button } from "antd";
+import { Layout } from "antd";
+// import Dashboard from "./pages/lab1";
+// import StudentList from "./pages/lab2";
+// import Lab2 from "./pages/lab2";
+// import LoginForm from "./pages/Lab3";
+import Lab4 from "./pages/lab4";
+import StoryList from "./pages/lab5";
+const { Header, Content, Footer } = Layout;
 
 function App() {
+  const onFinish = (values: any) => {
+    console.log(values);
+  };
   return (
     <>
       <nav className="bg-blue-600 text-white shadow">
@@ -36,10 +48,42 @@ function App() {
       {/* MAIN CONTENT */}
       <div className="max-w-6xl mx-auto mt-10 px-4 text-center">
         <h1 className="text-4xl font-bold mb-4">Chào mừng đến với WEB2091</h1>
+        
+        
+        <Button type="primary">Click me</Button>
+        <Button type="default">Click me</Button>
+        <Button type="dashed">Click me</Button>
+        <Button type="link">Click me</Button>
+        <Button type="text">Click me</Button>
+        <Layout>
+          <Header style={{ color: "white" }}>Header</Header>
+          <Content style={{ padding: 20 }}>
+            <Form onFinish={onFinish}>
+              <Form.Item label="Email" name="email"  rules={[
+    { required: true, message: "Vui lòng nhập email" },
+    { type: "email", message: "Email không hợp lệ" },
+  ]}>
+                <Input />
+              </Form.Item>
+              <Form.Item label="Password" name="password">
+                <Input.Password />
+              </Form.Item>
+              
+              <Form.Item>
+                <Button htmlType="submit" type="primary">
+                  Submit
+                </Button>
+              </Form.Item>
+            </Form>
+            {/* <LoginForm/> */}
+            {/* <Lab2/> */}
+            <Lab4/>
+            <StoryList/>
+          </Content>
+          <Footer>Footer</Footer>
+        </Layout>
       </div>
-      {/* <Route>
-            <Route path="/table"  element={</>}></Route>
-      </Route> */}
+
       <Toaster />
     </>
   );
